@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MJ Sephooa Projects PTY LTD</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal:      #4bbfc3;
+      --teal-dark: #2e8f93;
+      --slate:     #2d3f52;
+      --slate-mid: #3d5368;
+      --white:     #fafcfc;
+      --offwhite:  #f0f6f7;
+      --smoke:     #ddeaeb;
+      --mid:       #5a7480;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--white);
+      color: var(--slate);
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 5vw;
+      background: rgba(250,252,252,0.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--smoke);
+    }
+    .nav-logo svg { height: 44px; width: auto; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--mid);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--teal); }
+    .nav-cta {
+      background: var(--teal) !important;
+      color: #fff !important;
+      padding: 0.5rem 1.3rem;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--teal-dark) !important; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 72px;
+    }
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 6vw 5vw 6vw 6vw;
+      background: var(--slate);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-left::before {
+      content: '';
+      position: absolute;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: var(--teal);
+      opacity: 0.07;
+      bottom: -160px; right: -160px;
+    }
+    .hero-eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 1.2rem;
+      animation: fadeUp 0.8s ease both;
+    }
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.2rem, 6.5vw, 5.5rem);
+      line-height: 0.95;
+      letter-spacing: 0.02em;
+      animation: fadeUp 0.8s 0.15s ease both;
+    }
+    .hero-title span { color: var(--teal); }
+    .hero-sub {
+      margin-top: 1.8rem;
+      font-size: 0.97rem;
+      font-weight: 300;
+      line-height: 1.8;
+      color: #8faab5;
+      max-width: 400px;
+      animation: fadeUp 0.8s 0.3s ease both;
+    }
+    .hero-badges {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+      animation: fadeUp 0.8s 0.4s ease both;
+    }
+    .badge {
+      border: 1px solid rgba(75,191,195,0.35);
+      color: var(--teal);
+      padding: 0.35rem 0.9rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .hero-cta {
+      margin-top: 2.5rem;
+      display: inline-block;
+      background: var(--teal);
+      color: #fff;
+      text-decoration: none;
+      padding: 0.95rem 2.6rem;
+      font-weight: 500;
+      font-size: 0.9rem;
+      letter-spacing: 0.06em;
+      transition: background 0.2s, transform 0.2s;
+      animation: fadeUp 0.8s 0.5s ease both;
+      align-self: flex-start;
+    }
+    .hero-cta:hover { background: var(--teal-dark); transform: translateY(-2px); }
+
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-right img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .hero-right::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(45,63,82,0.45) 0%, rgba(75,191,195,0.15) 100%);
+    }
+    .hero-tag {
+      position: absolute;
+      bottom: 2rem; left: 2rem;
+      background: rgba(45,63,82,0.88);
+      color: var(--white);
+      padding: 1rem 1.4rem;
+      backdrop-filter: blur(6px);
+      z-index: 2;
+      border-left: 3px solid var(--teal);
+    }
+    .hero-tag-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.08em;
+      color: var(--teal);
+    }
+    .hero-tag-sub {
+      font-size: 0.78rem;
+      color: #8faab5;
+      margin-top: 0.2rem;
+    }
+
+    /* TICKER */
+    .ticker {
+      background: var(--teal);
+      color: #fff;
+      padding: 0.75rem 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .ticker-inner {
+      display: inline-block;
+      animation: ticker 24s linear infinite;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.18em;
+    }
+
+    /* SERVICES */
+    .services {
+      padding: 7rem 6vw;
+      background: var(--offwhite);
+    }
+    .section-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+      line-height: 1;
+      letter-spacing: 0.02em;
+      color: var(--slate);
+      margin-bottom: 3.5rem;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+    .service-card {
+      background: var(--white);
+      padding: 2.5rem 2rem;
+      border-top: 3px solid transparent;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+    }
+    .service-card:hover {
+      border-color: var(--teal);
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(75,191,195,0.12);
+    }
+    .service-icon {
+      width: 48px; height: 48px;
+      background: rgba(75,191,195,0.1);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 1.3rem;
+    }
+    .service-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 0.05em;
+      color: var(--slate);
+      margin-bottom: 0.8rem;
+    }
+    .service-desc {
+      font-size: 0.88rem;
+      line-height: 1.75;
+      color: var(--mid);
+      font-weight: 300;
+    }
+
+    /* ABOUT */
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 70vh;
+    }
+    .about-img { position: relative; overflow: hidden; }
+    .about-img img { width: 100%; height: 100%; object-fit: cover; }
+    .about-img::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, rgba(45,63,82,0.3), transparent);
+    }
+    .about-content {
+      padding: 6rem 5vw;
+      background: var(--white);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .about-content .section-title { margin-bottom: 1.5rem; }
+    .about-text {
+      font-size: 0.95rem;
+      line-height: 1.9;
+      color: var(--mid);
+      font-weight: 300;
+      max-width: 440px;
+    }
+    .about-stats {
+      display: flex;
+      gap: 3rem;
+      margin-top: 3rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--smoke);
+    }
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.8rem;
+      color: var(--teal);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-top: 0.3rem;
+    }
+
+    /* WHY US */
+    .why {
+      background: var(--slate);
+      color: var(--white);
+      padding: 6rem 6vw;
+      text-align: center;
+    }
+    .why .section-label { color: var(--teal); }
+    .why .section-title { color: var(--white); margin-bottom: 3.5rem; }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .why-item { padding: 1.5rem; }
+    .why-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3rem;
+      color: var(--teal);
+      opacity: 0.35;
+      line-height: 1;
+    }
+    .why-title { font-weight: 500; font-size: 1rem; margin: 0.5rem 0; color: var(--white); }
+    .why-desc { font-size: 0.84rem; color: #7a9aaa; font-weight: 300; line-height: 1.7; }
+
+    /* CONTACT */
+    .contact {
+      background: var(--offwhite);
+      padding: 7rem 6vw;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6vw;
+      align-items: start;
+    }
+    .contact-left .section-title { margin-bottom: 1.5rem; }
+    .contact-intro {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--mid);
+      font-weight: 300;
+      margin-bottom: 2.5rem;
+    }
+    .contact-info { display: flex; flex-direction: column; gap: 1.4rem; }
+    .contact-item { display: flex; align-items: flex-start; gap: 1rem; }
+    .contact-icon {
+      width: 38px; height: 38px; flex-shrink: 0;
+      background: rgba(75,191,195,0.12);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+    }
+    .contact-item-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 0.2rem;
+    }
+    .contact-item-value { font-size: 0.92rem; color: var(--slate); }
+
+    .contact-form-wrap {
+      background: var(--white);
+      padding: 2.5rem;
+      box-shadow: 0 4px 30px rgba(45,63,82,0.08);
+    }
+    .form-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 0.05em;
+      color: var(--slate);
+      margin-bottom: 1.5rem;
+    }
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form select {
+      width: 100%;
+      background: var(--offwhite);
+      border: 1px solid var(--smoke);
+      color: var(--slate);
+      padding: 0.9rem 1rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder { color: #9ab0b8; }
+    .contact-form input:focus,
+    .contact-form textarea:focus,
+    .contact-form select:focus {
+      border-color: var(--teal);
+      box-shadow: 0 0 0 3px rgba(75,191,195,0.1);
+    }
+    .contact-form textarea { resize: vertical; min-height: 120px; }
+    .form-btn {
+      background: var(--slate);
+      color: var(--white);
+      border: none;
+      padding: 1rem 2.2rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      align-self: flex-start;
+    }
+    .form-btn:hover { background: var(--teal); transform: translateY(-2px); }
+
+    /* FOOTER */
+    footer {
+      background: var(--slate);
+      color: #5a7a88;
+      padding: 2.5rem 6vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-copy { font-size: 0.8rem; }
+    .footer-copy strong { color: var(--teal); }
+    .footer-reg { font-size: 0.75rem; color: #3d5a68; }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { height: 55vw; }
+      .about { grid-template-columns: 1fr; }
+      .about-img { height: 60vw; }
+      .contact { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      footer { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">
+      <svg viewBox="0 0 230 50" xmlns="http://www.w3.org/2000/svg" fill="none">
+        <!-- House roofline -->
+        <polyline points="16,33 29,17 42,33" stroke="#4bbfc3" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- Wrench -->
+        <path d="M25,30 Q29,23 33,30" stroke="#2d3f52" stroke-width="2.8" stroke-linecap="round"/>
+        <circle cx="29" cy="31.5" r="2" fill="#2d3f52"/>
+        <!-- MJ -->
+        <text x="52" y="35" font-family="'Bebas Neue', sans-serif" font-size="24" fill="#2d3f52" letter-spacing="1">MJ</text>
+        <!-- SEPHOOA -->
+        <text x="81" y="35" font-family="'Bebas Neue', sans-serif" font-size="24" fill="#4bbfc3" letter-spacing="1">SEPHOOA</text>
+        <!-- PROJECTS PTY LTD -->
+        <text x="52" y="46" font-family="sans-serif" font-size="7" fill="#5a7480" letter-spacing="3.5">PROJECTS  PTY LTD</text>
+      </svg>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <p class="hero-eyebrow">Registered PTY LTD · Johannesburg · South Africa</p>
+      <h1 class="hero-title">Quality<br>Work.<br><span>Every</span><br>Time.</h1>
+      <p class="hero-sub">
+        MJ Sephooa Projects PTY LTD delivers professional cleaning, painting,
+        ceiling, and roofing services across Johannesburg.
+        Reliable. Skilled. Open to all opportunities.
+      </p>
+      <div class="hero-badges">
+        <span class="badge">Cleaning</span>
+        <span class="badge">Painting</span>
+        <span class="badge">Ceiling</span>
+        <span class="badge">Roofing</span>
+      </div>
+      <a href="#contact" class="hero-cta">Request a Free Quote →</a>
+    </div>
+    <div class="hero-right">
+      <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=900&q=80&auto=format&fit=crop" alt="Professional construction and maintenance work"/>
+      <div class="hero-tag">
+        <div class="hero-tag-title">PTY LTD · Registered</div>
+        <div class="hero-tag-sub">Serving Johannesburg & surrounds</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker">
+    <div class="ticker-inner">
+      CLEANING &nbsp;✦&nbsp; PAINTING &nbsp;✦&nbsp; CEILING INSTALLATION &nbsp;✦&nbsp; ROOFING &nbsp;✦&nbsp; OPEN TO ALL OPPORTUNITIES &nbsp;✦&nbsp; MJ SEPHOOA PROJECTS PTY LTD &nbsp;✦&nbsp;
+      CLEANING &nbsp;✦&nbsp; PAINTING &nbsp;✦&nbsp; CEILING INSTALLATION &nbsp;✦&nbsp; ROOFING &nbsp;✦&nbsp; OPEN TO ALL OPPORTUNITIES &nbsp;✦&nbsp; MJ SEPHOOA PROJECTS PTY LTD &nbsp;✦&nbsp;
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="services" class="services">
+    <p class="section-label">What We Offer</p>
+    <h2 class="section-title">Our Services</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🧹</div>
+        <div class="service-name">Cleaning</div>
+        <p class="service-desc">Thorough commercial and residential cleaning services. Offices, post-construction clean-ups, homes — we leave every space spotless and ready for use.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🖌️</div>
+        <div class="service-name">Painting</div>
+        <p class="service-desc">Interior and exterior painting with clean, lasting finishes. We prep the surface properly, use quality coatings, and deliver results that hold up over time.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📐</div>
+        <div class="service-name">Ceiling</div>
+        <p class="service-desc">New ceiling installations, repairs, and replacements. We work across a range of materials and ensure a level, professional finish on every project.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏠</div>
+        <div class="service-name">Roofing</div>
+        <p class="service-desc">Roof installations, repairs, waterproofing, and maintenance. We protect your structure through every season — no leaks, no shortcuts, no comebacks.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="about">
+    <div class="about-img">
+      <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=900&q=80&auto=format&fit=crop" alt="MJ Sephooa Projects team at work"/>
+    </div>
+    <div class="about-content">
+      <p class="section-label">Who We Are</p>
+      <h2 class="section-title">About MJ<br>Sephooa Projects</h2>
+      <p class="about-text">
+        MJ Sephooa Projects PTY LTD is a South African registered contracting company
+        built on reliability, skilled workmanship, and honest business.
+        <br><br>
+        We operate across cleaning, painting, ceilings, and roofing — and we are
+        open to any opportunity where our expertise can deliver real value.
+        Whether it's a small residential job or a large commercial contract,
+        we show up, we do it right, and we stand behind our work.
+      </p>
+      <div class="about-stats">
+        <div>
+          <div class="stat-num">4+</div>
+          <div class="stat-label">Core Services</div>
+        </div>
+        <div>
+          <div class="stat-num">PTY</div>
+          <div class="stat-label">Registered Entity</div>
+        </div>
+        <div>
+          <div class="stat-num">JHB</div>
+          <div class="stat-label">Based & Operating</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="why">
+    <p class="section-label">Why Choose Us</p>
+    <h2 class="section-title">What Sets Us Apart</h2>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-num">01</div>
+        <div class="why-title">Registered Business</div>
+        <p class="why-desc">We operate as a registered PTY LTD — professionally accountable on every contract.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-num">02</div>
+        <div class="why-title">Quality Workmanship</div>
+        <p class="why-desc">Every job is done to a standard we're proud to put our name on.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-num">03</div>
+        <div class="why-title">All Opportunities</div>
+        <p class="why-desc">Residential, commercial, government — we're open and equipped for any scale.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-num">04</div>
+        <div class="why-title">Johannesburg Based</div>
+        <p class="why-desc">Local team, fast response, and deep familiarity with the Joburg market.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact">
+    <div class="contact-left">
+      <p class="section-label">Get In Touch</p>
+      <h2 class="section-title">Let's Work<br>Together</h2>
+      <p class="contact-intro">
+        Have a project in mind? Need a quote? We respond promptly and are
+        open to all types of opportunities — big or small.
+      </p>
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-item-label">Location</div>
+            <div class="contact-item-value">Johannesburg, South Africa</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🏢</div>
+          <div>
+            <div class="contact-item-label">Company</div>
+            <div class="contact-item-value">MJ Sephooa Projects PTY LTD</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">✅</div>
+          <div>
+            <div class="contact-item-label">Availability</div>
+            <div class="contact-item-value">Open to all projects & contracts</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="contact-form-wrap">
+        <div class="form-title">Send an Enquiry</div>
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <input type="text" placeholder="Your Name" required/>
+            <input type="tel" placeholder="Phone Number" required/>
+          </div>
+          <input type="email" placeholder="Email Address (optional)"/>
+          <select required>
+            <option value="" disabled selected>Service Required</option>
+            <option value="cleaning">Cleaning</option>
+            <option value="painting">Painting</option>
+            <option value="ceiling">Ceiling</option>
+            <option value="roofing">Roofing</option>
+            <option value="multiple">Multiple Services</option>
+            <option value="other">Other / Not Sure</option>
+          </select>
+          <textarea placeholder="Describe your project or what you need..."></textarea>
+          <button type="submit" class="form-btn">Send Enquiry →</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <svg viewBox="0 0 200 40" xmlns="http://www.w3.org/2000/svg" fill="none" height="36">
+      <polyline points="10,26 20,14 30,26" stroke="#4bbfc3" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M17,24 Q20,19 23,24" stroke="#8faab5" stroke-width="2.2" stroke-linecap="round"/>
+      <circle cx="20" cy="25" r="1.5" fill="#8faab5"/>
+      <text x="38" y="26" font-family="'Bebas Neue', sans-serif" font-size="18" fill="#8faab5" letter-spacing="1">MJ </text>
+      <text x="58" y="26" font-family="'Bebas Neue', sans-serif" font-size="18" fill="#4bbfc3" letter-spacing="1">SEPHOOA</text>
+      <text x="38" y="36" font-family="sans-serif" font-size="6.5" fill="#3d5a68" letter-spacing="2.5">PROJECTS  PTY LTD</text>
+    </svg>
+    <p class="footer-copy">© 2025 <strong>MJ Sephooa Projects PTY LTD</strong> · All Rights Reserved</p>
+    <p class="footer-reg">Registered · Johannesburg, South Africa</p>
+  </footer>
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('.form-btn');
+      btn.textContent = '✓ Enquiry Sent!';
+      btn.style.background = 'var(--teal)';
+      setTimeout(() => {
+        btn.textContent = 'Send Enquiry →';
+        btn.style.background = '';
+        e.target.reset();
+      }, 3000);
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(el => {
+        if (el.isIntersecting) {
+          el.target.style.opacity = '1';
+          el.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.service-card, .about-content, .contact-left, .contact-form-wrap, .why-item').forEach((el, i) => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(28px)';
+      el.style.transition = `opacity 0.65s ${i * 0.08}s ease, transform 0.65s ${i * 0.08}s ease`;
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
